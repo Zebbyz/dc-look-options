@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Director’s Cut — look options (your live site untouched)</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; background: #111; color: #eee; padding: 28px 20px 60px; }
+  h1 { font-size: 1.4rem; font-weight: 650; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .note { color: #9aa0a6; font-size: 0.95rem; margin: 0 0 28px; max-width: 40rem; line-height: 1.45; }
+  .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 960px; }
+  .card { border: 1px solid #2a2a2a; border-radius: 12px; overflow: hidden; background: #181818; cursor: pointer; transition: border-color .15s; }
+  .card:hover, .card:focus-within { border-color: #666; }
+  .card.selected { border-color: #fff; outline: 2px solid #fff; outline-offset: 2px; }
+  .preview { min-height: 280px; }
+  .meta { padding: 14px 16px 18px; }
+  .meta h2 { margin: 0 0 6px; font-size: 1.05rem; }
+  .meta p { margin: 0; color: #9aa0a6; font-size: 0.9rem; line-height: 1.4; }
+  .letter { display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+  <h1>Which look feels less “grand dad”?</h1>
+  <p class="note">Your live site and project files stay exactly as they are. Click A or B, then tell me in chat which one you want (or neither).</p>
+  <div class="grid">
+    <div class="card" id="a" tabindex="0" role="button" onclick="pick('a')" onkeydown="if(event.key==='Enter'||event.key===' '){pick('a')}">
+      <div class="preview" style="background:#0a0a0a;color:#f2f2f0;padding:18px 16px;">
+        <div style="display:flex;justify-content:space-between;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.7;"><span>Director’s Cut</span><span>Order</span></div>
+        <div style="margin-top:18px;aspect-ratio:16/9;background:linear-gradient(135deg,#1a1a1a,#2c2c2c);border:1px solid #333;display:flex;align-items:flex-end;padding:10px;"><span style="font-size:11px;opacity:0.85;">Photo holds 7 seconds · silent</span></div>
+        <div style="margin-top:16px;font-size:22px;font-weight:700;letter-spacing:-0.03em;line-height:1.1;">Nineteen minutes.<br>No soundtrack.</div>
+        <div style="margin-top:10px;font-size:11px;opacity:0.65;">Black screen, big plain type, almost no decoration.</div>
+        <div style="margin-top:14px;display:inline-block;border:1px solid #f2f2f0;padding:6px 10px;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;">Send us your photos</div>
+      </div>
+      <div class="meta"><div class="letter">Option A</div><h2>Dark and sharp</h2><p>Near-black, bold headlines, almost no swirls or gold. Quiet but tough.</p></div>
+    </div>
+    <div class="card" id="b" tabindex="0" role="button" onclick="pick('b')" onkeydown="if(event.key==='Enter'||event.key===' '){pick('b')}">
+      <div class="preview" style="background:#e8eaee;color:#141820;padding:18px 16px;">
+        <div style="display:flex;justify-content:space-between;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#5a6472;"><span>Director’s Cut</span><span>Order</span></div>
+        <div style="margin-top:18px;aspect-ratio:16/9;background:#c5cad3;display:flex;align-items:flex-end;padding:10px;"><span style="font-size:11px;color:#3a4250;">Photo holds 7 seconds · silent</span></div>
+        <div style="margin-top:16px;font-size:22px;font-weight:600;letter-spacing:-0.02em;line-height:1.15;">Nineteen minutes.<br>No soundtrack.</div>
+        <div style="margin-top:10px;font-size:11px;color:#5a6472;">Cool grey like a photo lightbox. Lots of empty space. No amber curls.</div>
+        <div style="margin-top:14px;display:inline-block;background:#141820;color:#e8eaee;padding:6px 10px;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;">Send us your photos</div>
+      </div>
+      <div class="meta"><div class="letter">Option B</div><h2>Cool and spare</h2><p>Light grey, clean type, lots of air. Feels like a modern photo studio wall.</p></div>
+    </div>
+  </div>
+  <script>
+    function pick(id) {
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+      document.getElementById(id).classList.add('selected');
+      document.title = 'Picked ' + id.toUpperCase() + ' — tell Directors Cut in chat';
+    }
+  </script>
+</body>
+</html>
